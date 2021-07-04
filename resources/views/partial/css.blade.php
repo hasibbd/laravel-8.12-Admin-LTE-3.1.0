@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
 <!-- JQVMap -->
 <link rel="stylesheet" href="{{asset('plugins/jqvmap/jqvmap.min.css')}}">
+<!-- Data Table -->
+{{--    <link rel="stylesheet" href="{{asset('back/plugin/dudatepicker/duDatepicker.css')}}">--}}
+<link rel="stylesheet" href="{{asset('plugins/dt/datatables/css/dataTables.bootstrap4.min.css')}}">
 <!-- Theme style -->
 <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
 <!-- overlayScrollbars -->
