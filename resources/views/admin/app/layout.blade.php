@@ -1,20 +1,20 @@
-@include('partial.header')
+@include('admin.partial.header')
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
     <!-- Preloader -->
-    @include('partial.preloader')
+    @include('admin.partial.preloader')
 
     <!-- Navbar -->
-   @include('partial.navbar')
+   @include('admin.partial.navbar')
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-   @include('partial.mainsidebar')
+   @include('admin.partial.mainsidebar')
     <!-- Content Wrapper. Contains page content -->
     @yield('content')
     <!-- /.content-wrapper -->
-    @include('partial.footer')
+    @include('admin.partial.footer')
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -23,6 +23,6 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-@include('partial.script')
+@include('admin.partial.script')
 </body>
 </html>
