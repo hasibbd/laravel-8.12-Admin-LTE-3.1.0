@@ -20,6 +20,9 @@ class isAdmin
             return $next($request);
         }
         session()->flush();
-        return redirect()->route('/')->withErrors(['msg'=>'Unauthorized Action Performed']);
+        return redirect()->route('/')->withErrors(['msg'=>'<div class="alert alert-danger" id="alert">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            <strong>Sorry! </strong> Unauthorized Action Performed!
+                        </div>']);
     }
 }

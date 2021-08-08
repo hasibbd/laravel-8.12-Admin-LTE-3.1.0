@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ListController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['admin'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('list', [ListController::class, 'index'])->name('list.index');
+});
+Route::middleware(['user'])->group(function () {
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('list', [ListController::class, 'index'])->name('list.index');
 });
 

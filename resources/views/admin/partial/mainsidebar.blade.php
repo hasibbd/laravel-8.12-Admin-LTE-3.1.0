@@ -30,7 +30,7 @@
         </div>--}}
 
         <!-- Sidebar Menu -->
-    @include('partial.menu')
+    @include('admin.partial.menu')
     <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
