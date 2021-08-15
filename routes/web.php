@@ -24,7 +24,6 @@ Route::middleware(['admin'])->group(function () {
 });
 Route::middleware(['user'])->group(function () {
     Route::get('profile', [ProfileController::class, 'index'])->name('profile');
-    Route::get('list', [ListController::class, 'index'])->name('list.index');
 });
 
 Route::get('/', [AuthController::class, 'login'])->name('/');
