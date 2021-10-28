@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -23,6 +24,7 @@ class AuthController extends Controller
     }
     public function logout(){
         session()->flush();
+        Auth::logout();
         return redirect()->route('/')->withErrors(['msg'=>'<div class="alert alert-primary" id="alert">
                             <button type="button" class="close" data-dismiss="alert">x</button>
                             <strong>Thank You! </strong> See you soon...

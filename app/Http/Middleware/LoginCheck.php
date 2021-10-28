@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LoginCheck
@@ -19,19 +20,17 @@ class LoginCheck
     public function handle(Request $request, Closure $next)
     {
         $target = User::where('email',$request->email)->first();
+        $credentials = $request->only('email', 'password');
         if ($target){
-            if (Hash::check($request->password,$target->password)){
+            if (Auth::attempt($credentials)){
                 if ($target->status == CONST_STATUS_ENABLED){
-                   session([
-                      'role' => $target->role,
-                      'email' => $target->email,
-                      'name' => $target->name
-                   ]);
-                   switch ($target->role){
-                       case CONST_ROLE_ADMIN:  return redirect()->route('dashboard'); break;
-                       case CONST_ROLE_USER:  return redirect()->route('profile'); break;
-                   }
-
+                    switch ($target->role){
+                        case CONST_ROLE_ADMIN:  return redirect()->route('dashboard'); break;
+                        default: redirect()->route('/')->withErrors(['msg'=>'<div class="alert alert-danger" id="alert">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            <strong>Sorry! </strong> Unknown user!
+                        </div>']);
+                    }
                 }else{
                     return redirect()->route('/')->withErrors(['msg'=>'<div class="alert alert-warning" id="alert">
                             <button type="button" class="close" data-dismiss="alert">x</button>

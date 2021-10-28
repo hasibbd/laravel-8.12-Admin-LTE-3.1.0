@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class isUser
 {
@@ -16,9 +17,10 @@ class isUser
      */
     public function handle(Request $request, Closure $next)
     {
-        if (session('role') == CONST_ROLE_USER){
+        if (Auth::user()->role == CONST_ROLE_USER){
             return $next($request);
         }
+        Auth::logout();
         session()->flush();
         return redirect()->route('/')->withErrors(['msg'=>'<div class="alert alert-danger" id="alert">
                             <button type="button" class="close" data-dismiss="alert">x</button>
