@@ -19,11 +19,17 @@ A step by step series of examples that tell you how to get a development env run
 composer install
 
 # 3. Copy ENV file
-copy .env.example .env
+cp .env.example .env
 
 # 4. APP Key
 php artisan key:generate
 
-# 5. Admin Seed
-copy .env.example .env
+# 5. Edit ENV
+Set database info
+
+# 5. Migrate
+php artisan migrate
+
+# 5. Seed
+php artisan db:seed --class=AdminUserSeeder 
 
