@@ -17,8 +17,10 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role == CONST_ROLE_ADMIN){
-            return $next($request);
+        if (Auth::user()){
+            if (Auth::user()->role == CONST_ROLE_ADMIN) {
+              return $next($request);
+            }
         }
         Auth::logout();
         session()->flush();
